@@ -62,5 +62,6 @@ function getWinner(competition) {
         return user2[1].userName;
     }
 
+    console.log('un: none');
     return 'none';
 }
