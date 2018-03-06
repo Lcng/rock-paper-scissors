@@ -77,7 +77,7 @@ function receiveMessage() {
         // 显式出招结果
         let shapeDiv = document.createElement('div');
         shapeDiv.className = data.userName == userName ? 'me' : 'opponent';
-        shapeDiv.innerText = data.shape + ' :' + userName;
+        shapeDiv.innerText = data.userName == userName ? (data.shape + ' :' + data.userName) : (data.userName + ': ' + data.shape);
         let historyDiv = document.querySelector('#gamePanel .history');
         historyDiv.appendChild(shapeDiv);
 
