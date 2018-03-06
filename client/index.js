@@ -77,7 +77,7 @@ function receiveMessage() {
         // 显式出招结果
         let shapeDiv = document.createElement('div');
         shapeDiv.className = data.userName == userName ? 'me' : 'opponent';
-        shapeDiv.innerText = data.shape;
+        shapeDiv.innerText = data.shape + ' :' + userName;
         let historyDiv = document.querySelector('#gamePanel .history');
         historyDiv.appendChild(shapeDiv);
 
@@ -87,6 +87,9 @@ function receiveMessage() {
             resultDiv.className = 'result';
             resultDiv.innerText = (data.winner == 'none' ? '平局' : (data.winner == userName ? '赢了' : '输了'));
             historyDiv.appendChild(resultDiv);
+
+            let hr = document.createElement('hr');
+            historyDiv.appendChild(hr);
         }
 
         // alert(data);
