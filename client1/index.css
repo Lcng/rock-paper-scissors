@@ -1,0 +1,65 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/*登录DIV*/
+#logInDiv {
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    top: calc(50% - 30px);
+    text-align: center;
+    /* border: 1px solid red; */
+    line-height: 2em;
+    display: none;
+}
+
+/*游戏面板*/
+#gamePanel {
+    width:100%;
+    height: 100%;
+}
+
+/*历史对局*/
+#gamePanel .history {
+    height: calc(100% - 50px);
+}
+
+/*对手招式*/
+#gamePanel .history .opponent {
+    text-align: left;
+}
+
+/*本人招式*/
+#gamePanel .history .me {
+    text-align: right;
+}
+
+/*对局结果*/
+#gamePanel .history .result {
+    text-align: center;
+}
+
+/*对局分割线*/
+#gamePanel .history  hr {
+    border:0;
+    border-top: 1px solid silver;
+}
+
+/*出招区域*/
+#gamePanel .action {
+    text-align: right;
+    /* margin-bottom: 20px; */
+    margin-right: 10px;
+}
+
+/*已出招提示*/
+#gamePanel .action span {
+    display: none;
+}
+
+/*候选手型*/
+#gamePanel .action label {
+    margin-right: 5px;
+}
