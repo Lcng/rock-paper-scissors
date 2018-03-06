@@ -1,0 +1,22 @@
+{
+  "name": "rock-paper-scissors",
+  "version": "1.0.0",
+  "description": "A desktop APP with witch you can play Rock-paper-scissors with another player online.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "",
+  "keywords": [
+    "rock-paper-scissors",
+    "Electron",
+    "Node.js"
+  ],
+  "author": "Lcng",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "~1.8.2",
+    "express": "latest",
+    "socket.io": "latest"
+  }
+}
