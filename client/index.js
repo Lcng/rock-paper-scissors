@@ -12,41 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initialize() {
     socket = io('http://localhost:3000');
 
-    // 接收服务端的登录响应通知
-    socket.on('logIn', (data) => {
-        if (!data.success) {
-            alert(data.message);
-            return;
-        }
-
-        userName = data.userName;
-        authenticate();
-    })
-
-    // 接收服务端的出招响应通知
-    socket.on('play', (data) => {
-        if (!data.success) { // 服务端通知自己出招失败
-            alert(data.message);
-            return;
-        }
-
-        // 显式出招结果
-        let shapeDiv = document.createElement('div');
-        shapeDiv.className = data.userName == userName ? 'me' : 'opponent';
-        shapeDiv.innerText = data.shape;
-        let historyDiv = document.querySelector('#gamePanel .history');
-        historyDiv.appendChild(shapeDiv);
-
-        // 服务端返回了赢家，那么显式它
-        if (data.winner) {
-            let resultDiv = document.createElement('div');
-            resultDiv.className = 'result';
-            resultDiv.innerText = (data.winner == 'none' ? '平局' : (data.winner == userName ? '赢了' : '输了'));
-            historyDiv.appendChild(resultDiv);
-        }
-
-        // alert(data);
-    })
+    receiveMessage();
 }
 
 // 验证登录状态
@@ -75,3 +41,54 @@ document.querySelector('#logInButton').addEventListener('click', () => {
 document.querySelector('#gamePanel .action button').addEventListener('click', () => {
     socket.emit('play');
 })
+
+// 接收服务端通知消息
+function receiveMessage() {
+    // 接收服务端的登录响应通知
+    socket.on('logIn', (data) => {
+        if (!data.success) {
+            alert(data.message);
+            return;
+        }
+
+        userName = data.userName;
+        authenticate();
+
+        // 维持登录
+        setInterval(() => {
+            socket.emit('heartbeat');
+        }, 10 * 1000);
+
+        // 监听连接断开事件
+        socket.on('disconnect', () => {
+            alert('断开连接');
+            userName = undefined;
+            authenticate();
+        });
+    })
+
+    // 接收服务端的出招响应通知
+    socket.on('play', (data) => {
+        if (!data.success) { // 服务端通知自己出招失败
+            alert(data.message);
+            return;
+        }
+
+        // 显式出招结果
+        let shapeDiv = document.createElement('div');
+        shapeDiv.className = data.userName == userName ? 'me' : 'opponent';
+        shapeDiv.innerText = data.shape;
+        let historyDiv = document.querySelector('#gamePanel .history');
+        historyDiv.appendChild(shapeDiv);
+
+        // 服务端返回了赢家，那么显式它
+        if (data.winner) {
+            let resultDiv = document.createElement('div');
+            resultDiv.className = 'result';
+            resultDiv.innerText = (data.winner == 'none' ? '平局' : (data.winner == userName ? '赢了' : '输了'));
+            historyDiv.appendChild(resultDiv);
+        }
+
+        // alert(data);
+    })
+}
