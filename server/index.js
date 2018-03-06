@@ -93,7 +93,10 @@ io.on('connection', function (socket) {
         })
     });
 
+    // 维持登录
+    socket.on('heartbeat', () => {
 
+    })
 
     // when the user disconnects.. perform this
     socket.on('disconnect', function () {

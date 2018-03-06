@@ -30,8 +30,8 @@ function gameLogic() {
 
             console.log('对局人数: ' + competition.size);
             if (competition.size >= 2) {
-                competition = undefined;
                 handShape['winner'] = getWinner(competition);
+                competition = undefined;
             }
             
             return handShape;
@@ -52,14 +52,24 @@ function getWinner(competition) {
     let user1 = iterator.next().value;
     let user2 = iterator.next().value;
 
-    let difference = user1.value - user2.value;
+console.log(user1);
+console.log(user1[1].value);
+console.log(user2);
+console.log(user2[1].value);
+
+    let difference = user1[1].value - user2[1].value;
+console.log('diff'+difference);
+
     if  (difference == -1 || difference == 2) {
-        return user1.userName;
+        console.log('un:' + user1.userName);
+        return user1[1].userName;
     }
 
     if (difference == -2 || difference == 1) {
-        return user2.userName;
+        console.log('un:' + user2.userName);
+        return user2[1].userName;
     }
 
+    console.log('un: none');
     return 'none';
 }
