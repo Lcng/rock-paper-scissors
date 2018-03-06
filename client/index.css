@@ -1,0 +1,42 @@
+/*登录DIV*/
+#logInDiv {
+    width: 100%;
+    height: 60px;
+    margin: calc(50% - 150px) auto 0 auto;
+    text-align: center;
+    /* border: 1px solid red; */
+    line-height: 2em;
+    display: none;
+}
+
+/*游戏面板*/
+#gamePanel {
+    width:100%;
+    height: 100%;
+}
+
+/*对手招式*/
+#gamePanel .history .opponent {
+    text-align: left;
+}
+
+/*本人招式*/
+#gamePanel .history .me {
+    text-align: right;
+}
+
+/*对局结果*/
+#gamePanel .history .result {
+    text-align: center;
+}
+
+/*对局分割线*/
+#gamePanel .history  hr {
+    border:0;
+    border-top: 1px solid silver;
+}
+
+/*出招按钮*/
+#gamePanel .action {
+    text-align: right;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock–paper–scissors</title>
+  <link href="./index.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <div id="logInDiv">
+    User Name:
+    <input type="text" id="userNameInput" />
+    <br/>
+    <button type="button" id="logInButton">Log In</button>
+  </div>
+
+  <div id="gamePanel">
+    <div class=history>
+      <div class="opponent">石头</div>
+      <div class="me">剪刀</div>
+      <div class="result">输了。。</div>
+      <hr/>
+    </div>
+    <div class="action">
+      <button type="button">出招</button>
+    </div>
+  </div>
+
+  <script>
+    require('./index.js');
+  </script>
+</body>
+
+</html>
